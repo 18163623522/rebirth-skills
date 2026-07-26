@@ -1,7 +1,7 @@
 ---
 name: manage-boxes
 description: List, create boxes and view cards in a box in RebirthNote. Use when user wants to organize notes into collections/folders.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, boxes, organize, collections]
 ---
 
@@ -20,8 +20,10 @@ rebirth box stats      # Card count per box
 ### MCP Tools
 
 - `box_list` — No parameters
-- `box_cards` — Parameters: `boxId`, `cardType?`, `limit?`  
+- `box_create` — Parameters: `name`, `description?`, `color?`
+- `box_cards` — Parameters: `boxId`, `cardType?`, `limit?`
   - `cardType` 与搜索一致：九种可创建类型为 `card` / `diary` / `task` / `html` / `mermaid` / `mind-map` / `draw-board` / `multi-table` / `attachment`；过滤旧库时仍可传实际存在的历史类型。
+- `box_stats` — No parameters; returns card count per box
 
 ### Data Model
 

@@ -1,7 +1,7 @@
 ---
 name: delete-card
 description: Soft delete, restore, or permanently purge RebirthNote cards. Use when user wants to delete or recover notes.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, delete, restore, cards]
 ---
 
@@ -19,6 +19,7 @@ rebirth card purge <card-id>     # Permanent delete (irreversible)
 
 - `card_delete` — Parameters: `cardId`. Sets delFlag=1.
 - `card_restore` — Parameters: `cardId`. Sets delFlag=0.
+- `card_purge` — Parameters: `cardId`, `confirm: true`. Permanently deletes the card.
 
 ### Behavior
 
@@ -32,4 +33,5 @@ rebirth card purge <card-id>     # Permanent delete (irreversible)
 
 ### Warning
 
-Purge is irreversible. Always confirm with the user before executing.
+Purge is irreversible. Always confirm with the user before executing; MCP
+requires the literal `confirm: true`.

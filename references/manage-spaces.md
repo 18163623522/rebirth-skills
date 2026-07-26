@@ -1,7 +1,7 @@
 ---
 name: manage-spaces
 description: List and switch spaces in RebirthNote. Use when user needs to work with different note spaces.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, spaces, workspace]
 ---
 
@@ -16,9 +16,11 @@ rebirth space current       # Show current space
 rebirth space list --json   # JSON 数组 [{ "id", "name" }, ...]
 ```
 
-### MCP Tool
+### MCP Tools
 
 - `space_list` — No parameters
+- `space_use` — Parameters: `spaceId`; updates the default space in CLI config
+- `space_current` — No parameters; returns the currently resolved space
 
 ### Space Resolution Priority
 

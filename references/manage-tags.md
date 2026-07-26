@@ -1,7 +1,7 @@
 ---
 name: manage-tags
 description: List, create, delete, rename tags and view cards under a tag in RebirthNote. Use when user wants to organize notes with tags.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, tags, organize]
 ---
 
@@ -23,9 +23,9 @@ rebirth tag cards <tag-id> --limit 20
 
 - `tag_list` — Parameters: `tree?` (boolean)
 - `tag_create` — Parameters: `name`, `color?`, `parentId?`
+- `tag_delete` — Parameters: `tagId`; recursively soft-deletes descendants
+- `tag_rename` — Parameters: `tagId`, `newName`; recursively updates descendant names
 - `tag_cards` — Parameters: `tagId`, `limit?`
-
-> **注意**: `tag_delete` 和 `tag_rename` 仅在 CLI 中可用，MCP 不提供这两个工具。
 
 ### Data Model
 

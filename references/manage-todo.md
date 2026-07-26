@@ -1,7 +1,7 @@
 ---
 name: manage-todo
 description: Search, filter, and view statistics of todo items embedded in RebirthNote cards. Use when user wants to manage tasks and to-do lists.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, todo, tasks]
 ---
 
@@ -17,11 +17,10 @@ rebirth todo search --card-id <card-id>      # Todos from a specific card
 rebirth todo stats                           # Count total/completed/uncompleted
 ```
 
-### MCP Tool: `todo_search`
+### MCP Tools
 
-Parameters:
-- `status` — `completed` / `uncompleted` (optional)
-- `cardId` — filter by card (optional)
+- `todo_search` — Parameters: `status?`, `cardId?`, `limit?`（默认 50）
+- `todo_stats` — No parameters; returns `total/completed/uncompleted`
 
 ### How Todos Work
 

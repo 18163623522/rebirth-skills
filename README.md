@@ -43,6 +43,10 @@ skills/
 
 **结论**：对外只暴露一个 skill（根 `SKILL.md`），通过「操作索引」+「何时读」控制上下文体积。
 
+CLI 与 MCP 的业务能力保持一一覆盖：除 MCP 服务自身的启停和配置命令外，
+CLI 的 29 项业务命令均有对应 MCP 工具。完整机器校验由
+`scripts/check-card-contract.mjs` 执行。
+
 ## cardType 约定（CLI/MCP 创建）
 
 - 九种用户卡片：`card`、`diary`、`task`、`html`、`mermaid`、`mind-map`、`draw-board`、`multi-table`、`attachment`。

@@ -1,7 +1,7 @@
 ---
 name: rebirthnote
 description: Operate RebirthNote notes via CLI and MCP — search, create, view, update, delete cards; manage tags, boxes, spaces, todos, prompts; setup CLI/MCP. One skill entry point; see references/ for per-operation details (progressive disclosure).
-version: 2.0.0
+version: 2.1.0
 tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 ---
 
@@ -67,15 +67,16 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 - `rebirth mcp stdio` / `mcp serve` / `mcp config --cursor` / `mcp config --claude-code`
 - `rebirth info` / `rebirth stats`
 
-### MCP Tools（15 个）
+### MCP Tools（29 个）
 
-`card_create`, `card_search`, `card_get`, `card_batch_get`, `card_update`, `card_delete`, `card_restore`, `tag_list`, `tag_create`, `tag_cards`, `box_list`, `box_cards`, `space_list`, `todo_search`, `prompt_list`
+`card_create`, `card_search`, `card_get`, `card_batch_get`, `card_update`, `card_delete`, `card_restore`, `card_purge`, `tag_list`, `tag_create`, `tag_delete`, `tag_rename`, `tag_cards`, `box_list`, `box_create`, `box_cards`, `box_stats`, `space_list`, `space_use`, `space_current`, `todo_search`, `todo_stats`, `prompt_list`, `prompt_create`, `prompt_get`, `prompt_update`, `prompt_delete`, `info`, `stats`
 
 ---
 
 ## 策略与边界
 
-- **输出**：下游自动化优先用结构化 JSON（CLI 加 `--json`，MCP 返回可解析的 JSON 文本）；直接给人看时用自然语言或表格。
+- **输出**：下游自动化优先用结构化 JSON（CLI 加 `--json`，全部 MCP 工具返回可解析的 JSON 文本）；直接给人看时可再转为自然语言或表格。
+- **能力对齐**：除 MCP 服务自身的 `stdio/serve/config` 启停配置命令外，CLI 的 29 项业务命令均有同名语义的 MCP 工具；永久删除仍必须先向用户确认。
 - **卡片类型**：开放 `card`、`diary`、`task`、`html`、`mermaid`、`mind-map`、`draw-board`、`multi-table`、`attachment` 九种用户卡片。
 - **思维导图契约**：CLI/MCP 创建或更新 `mind-map` 时统一根 `id`、节点/连线 `mapId` 与卡片 ID，保证嵌入画布后的整树拖拽和布局同步；原生 JSON 还会校验父子及连线引用。
 - **内容格式**：普通卡片、日记、任务使用 Markdown；HTML、Mermaid、画板、多维表等使用各自页面原生格式。
@@ -94,6 +95,7 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 
 ## 版本
 
+- 2.1.0：补齐 CLI 的全部 29 项业务能力到 MCP，并增加命令面、参数和 Skill 文档的防漂移校验。
 - 2.0.0：统一九种用户卡片的 CLI/MCP/Skill 契约，补齐结构化内容、附件与 Unicode Emoji 往返。
 - 1.1.0：入口仍为根 `SKILL.md`；按操作细节迁至 `references/*.md`，并约定 `scripts/`、`assets/`。
 - 1.0.0：统一入口 + 11 个子目录各一 `SKILL.md`（已废弃该布局）。

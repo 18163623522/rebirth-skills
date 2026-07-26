@@ -15,7 +15,7 @@ rebirth card get <card-id> --raw
 rebirth card batch-get <id1> <id2>
 ```
 
-MCP 使用 `card_get({ cardId })` 或 `card_batch_get({ cardIds })`，返回 JSON 格式的规范化卡片。
+MCP 使用 `card_get({ cardId, raw? })` 或 `card_batch_get({ cardIds })`，返回 JSON 格式的规范化卡片；`raw: true` 对应 CLI `--raw`。
 
 | 类型 | 读取结果 |
 |---|---|

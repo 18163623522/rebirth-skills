@@ -1,7 +1,7 @@
 ---
 name: setup-cli
 description: Build, configure, and run the RebirthNote CLI and MCP Server. Use when user needs to set up, build, or configure the CLI/MCP integration.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, cli, mcp, setup, configuration]
 ---
 
@@ -18,6 +18,7 @@ node cli-mcp-publish/dist-cli/index.mjs   # Run CLI directly
 
 ```bash
 --db-path <path>    # Override database file path
+--storage-path <path> # Override Rebirth storage root; managed files use its files/ child
 --space-id <id>     # Override space ID
 --json              # JSON output mode
 --verbose           # Verbose logging
@@ -67,3 +68,5 @@ rebirth mcp config --claude-code  # → Claude Code MCP config JSON
 rebirth info     # Database path, size, card/space count
 rebirth stats    # Card type breakdown, tag/box counts
 ```
+
+MCP exposes the same queries as `info` and `stats`.

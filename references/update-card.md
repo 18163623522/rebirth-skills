@@ -24,7 +24,7 @@ rebirth card update <card-id> --box <box-id> --collect
 
 ## MCP `card_update`
 
-支持 `cardId`、`name`、`content`、`filePath`、`contentFormat`、`tableData`、`date`、`startDate`、`endDate`、`description`、`addTagIds`、`removeTagIds`、`boxId`、`isCollect`。成功返回更新后的完整规范化卡片。
+支持 `cardId`、`name`、`content`、`filePath`、`contentFormat`、`tableData`、`date`、`startDate`、`endDate`、`description`、`addTagIds`、`removeTagIds`、`boxId`、`isCollect`。`multi-table` 可通过 `tableData` 或 `filePath` 输入完整 JSON。成功返回更新后的完整规范化卡片。
 
 ## 类型化更新
 

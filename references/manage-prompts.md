@@ -1,7 +1,7 @@
 ---
 name: manage-prompts
 description: Manage prompt templates stored locally for RebirthNote CLI. Use when user wants to create, view, or manage reusable prompt templates.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, prompts, templates]
 ---
 
@@ -21,6 +21,9 @@ rebirth prompt delete <name>
 
 - `prompt_list` — No parameters
 - `prompt_get` — Parameters: `name`
+- `prompt_create` — Parameters: `name`, `cmd`
+- `prompt_update` — Parameters: `name`, `cmd`
+- `prompt_delete` — Parameters: `name`
 
 ### Storage
 

@@ -1,7 +1,7 @@
 ---
 name: search-cards
 description: Search RebirthNote cards by keyword, tag, box, type, date range. Use when user wants to find or query notes.
-version: 1.0.0
+version: 1.1.0
 tags: [rebirthnote, search, cards, query]
 ---
 
@@ -34,6 +34,7 @@ Parameters:
 - `from` / `to` — 日期范围（ISO 8601）
 - `limit` / `offset` — 分页
 - `sort` / `order` — 排序
+- 返回完整 `{ list, total, limit, offset }` JSON，与 CLI `--json` 结构一致。
 
 ### Notes
 
