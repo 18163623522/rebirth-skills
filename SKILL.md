@@ -1,7 +1,7 @@
 ---
 name: rebirthnote
 description: Operate RebirthNote notes via CLI and MCP — search, create, view, update, delete cards; manage tags, boxes, spaces, todos, prompts; setup CLI/MCP. One skill entry point; see references/ for per-operation details (progressive disclosure).
-version: 1.1.0
+version: 2.0.0
 tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 ---
 
@@ -23,7 +23,7 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 
 - 修改 RebirthNote 主应用源码（`src/`）或数据库表结构
 - 需要云端同步、登录认证（CLI/MCP 仅操作本地库）
-- 需要编辑画板/多维表格/附件类卡片正文（CLI 仅支持 **card / diary / html** 的 Markdown 正文 + **mind-map / mermaid**；无 `rich-text` 类型）
+- 需要修改 RebirthNote 页面布局、渲染器源码或数据库结构
 
 ---
 
@@ -32,7 +32,7 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 | 操作 | 说明 | 何时读 | 详细说明位置 |
 |------|------|--------|--------------|
 | **搜索卡片** | 按关键词、标签、盒子、类型、日期搜索 | 用户要查找/筛选笔记 | `skills/references/search-cards.md` |
-| **创建卡片** | 创建卡片，内容用 Markdown；类型仅五种 | 用户要新建笔记 | `skills/references/create-card.md` |
+| **创建卡片** | 创建九种用户卡片，支持 Markdown、HTML、Mermaid、结构化 JSON 与附件 | 用户要新建笔记 | `skills/references/create-card.md` |
 | **查看卡片** | 查看单张或批量卡片，内容转为 Markdown | 用户要读某张卡片全文或元数据 | `skills/references/view-card.md` |
 | **更新卡片** | 修改标题、内容、标签、盒子、收藏状态 | 用户要改已有笔记 | `skills/references/update-card.md` |
 | **删除/恢复卡片** | 软删除、恢复、永久删除 | 用户要删或恢复笔记 | `skills/references/delete-card.md` |
@@ -56,7 +56,7 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 
 ## 工具总览
 
-### CLI 命令（全局选项：`--db-path`, `--space-id`, `--json`）
+### CLI 命令（全局选项：`--db-path`, `--storage-path`, `--space-id`, `--json`）
 
 - `rebirth card search` / `create` / `get` / `batch-get` / `update` / `delete` / `restore` / `purge`
 - `rebirth tag list` / `create` / `delete` / `rename` / `cards`
@@ -76,9 +76,11 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 ## 策略与边界
 
 - **输出**：下游自动化优先用结构化 JSON（CLI 加 `--json`，MCP 返回可解析的 JSON 文本）；直接给人看时用自然语言或表格。
-- **内容格式**：与用户/调用方交互统一用 Markdown；入库由 CLI/MCP 转为 TipTap JSON 等。
+- **卡片类型**：开放 `card`、`diary`、`task`、`html`、`mermaid`、`mind-map`、`draw-board`、`multi-table`、`attachment` 九种用户卡片。
+- **思维导图契约**：CLI/MCP 创建或更新 `mind-map` 时统一根 `id`、节点/连线 `mapId` 与卡片 ID，保证嵌入画布后的整树拖拽和布局同步；原生 JSON 还会校验父子及连线引用。
+- **内容格式**：普通卡片、日记、任务使用 Markdown；HTML、Mermaid、画板、多维表等使用各自页面原生格式。
 - **不做**：不修改 `src/`、不执行 `synchronize: true`、不绕过纯文本提取与分词写入索引。
-- **权限**：仅访问本地配置与数据库，无网络、无认证；数据库路径由 `--db-path` / 环境变量 / `~/.rebirthnote-cli/config.json` 解析。
+- **权限**：仅访问本地配置与数据库，无网络、无认证；数据库路径由 `--db-path` / 环境变量 / `~/.rebirthnote-cli/config.json` 解析。文件存储根目录由 `--storage-path`、`REBIRTHNOTE_STORAGE_PATH`、CLI 配置或 Rebirth 的 Electron `config.json` 依次解析，实际文件进入其 `files` 子目录。
 
 ---
 
@@ -92,5 +94,6 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 
 ## 版本
 
+- 2.0.0：统一九种用户卡片的 CLI/MCP/Skill 契约，补齐结构化内容、附件与 Unicode Emoji 往返。
 - 1.1.0：入口仍为根 `SKILL.md`；按操作细节迁至 `references/*.md`，并约定 `scripts/`、`assets/`。
 - 1.0.0：统一入口 + 11 个子目录各一 `SKILL.md`（已废弃该布局）。

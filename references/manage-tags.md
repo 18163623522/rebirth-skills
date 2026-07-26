@@ -33,4 +33,4 @@ rebirth tag cards <tag-id> --limit 20
 - Cards link to tags via `sys_card_base.tagIds` (comma-separated UUID string)
 - Tag search uses `LIKE '%tagId%'`
 - Tags are scoped to a space (`spaceId`)
-- **按标签筛选卡片时，自动包含该标签的所有子孙标签**（通过内存遍历标签树展开）
+- **Electron 客户端**按标签筛选时会包含子孙标签；**CLI/MCP 的 `card search` / `tag cards` 仅匹配该标签 ID**（不含子标签，除非子标签也打在卡片上）

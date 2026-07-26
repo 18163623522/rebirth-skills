@@ -1,38 +1,29 @@
 ---
 name: view-card
-description: View RebirthNote card details with content converted to Markdown. Use when user wants to read a specific note.
-version: 1.0.0
+description: Read normalized metadata and typed content for RebirthNote cards.
+version: 2.0.0
 tags: [rebirthnote, view, read, cards]
 ---
 
-## Instructions
-
-### CLI
+# 查看卡片
 
 ```bash
-rebirth card get <card-id>                # Full details, content as Markdown
-rebirth card get <card-id> --content-only  # Only Markdown content
-rebirth card get <card-id> --meta-only     # Only metadata (no content)
-rebirth card get <card-id> --raw           # Raw database JSON
-rebirth card batch-get <id1> <id2> <id3>   # Multiple cards
+rebirth card get <card-id>
+rebirth card get <card-id> --content-only
+rebirth card get <card-id> --meta-only
+rebirth card get <card-id> --raw
+rebirth card batch-get <id1> <id2>
 ```
 
-### MCP Tools
+MCP 使用 `card_get({ cardId })` 或 `card_batch_get({ cardIds })`，返回 JSON 格式的规范化卡片。
 
-- `card_get` — Parameters: `cardId` (required). Returns card with content as Markdown.
-- `card_batch_get` — Parameters: `cardIds` (string array). Returns multiple cards.
+| 类型 | 读取结果 |
+|---|---|
+| `card` / `diary` / `task` / 历史 `rich-text` | TipTap 转 Markdown |
+| `html` | 原始 HTML，同时返回 `url` 与 `localPath` |
+| `mermaid` | 优先读取页面字段 `sys_card_base.text`，兼容旧 `sys_card_mermaid` |
+| `mind-map` / `draw-board` | 页面原生 JSON |
+| `multi-table` | `content` 及完整 `tableData`：`data/attrList/viewList/currentViewId/relationTableId` |
+| `attachment` | 文件名、URL、本地路径、MD5、大小及提取文本 |
 
-### Content Format Conversion (auto)
-
-| 存储/类型（cardType） | 库内格式 | 输出 |
-|------------------------|----------|------|
-| **card / diary / html**（及落在 `sys_card_rich_text` 的正文） | TipTap JSON | Markdown |
-| **mind-map** | MindMap JSON | JSON as-is |
-| **mermaid** | Mermaid 代码 | 代码 as-is |
-| **draw-board / multi-table** 等 | JSON | JSON as-is |
-| **attachment** | 文件元数据 | 元数据 JSON |
-
-### cardType 与创建能力
-
-- **新建卡片**时 CLI/MCP **只认五种**：`card`、`diary`、`html`、`mind-map`、`mermaid`。
-- 旧库中可能仍存在历史 `cardType` 字符串；查看时仍按上表尽量转为 Markdown 或原样返回。
+九种可创建类型为 `card`、`diary`、`task`、`html`、`mermaid`、`mind-map`、`draw-board`、`multi-table`、`attachment`。内部和历史类型仍按已有数据尽量兼容读取。

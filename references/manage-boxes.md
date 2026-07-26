@@ -21,7 +21,7 @@ rebirth box stats      # Card count per box
 
 - `box_list` — No parameters
 - `box_cards` — Parameters: `boxId`, `cardType?`, `limit?`  
-  - `cardType` 与搜索一致：**新建仅五种**（`card` / `diary` / `html` / `mind-map` / `mermaid`），无 `rich-text`；过滤旧库时可传库内实际存在的类型字符串。
+  - `cardType` 与搜索一致：九种可创建类型为 `card` / `diary` / `task` / `html` / `mermaid` / `mind-map` / `draw-board` / `multi-table` / `attachment`；过滤旧库时仍可传实际存在的历史类型。
 
 ### Data Model
 

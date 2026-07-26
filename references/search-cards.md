@@ -27,7 +27,8 @@ Parameters:
 - `keyword` — 搜索关键词
 - `tagId` / `tagName` — 标签筛选
 - `boxId` — 盒子筛选
-- `cardType` — 按类型筛选。**新建仅五种**：`card` | `diary` | `html` | `mind-map` | `mermaid`。筛选时若库内存在历史数据，可能仍会出现其他字符串；**不要把 `rich-text` 当作当前支持的创建类型**。其他常见过滤值（与库内一致即可）：`mind-map`、`mermaid`、`draw-board`、`multi-table`、`attachment` 等。
+- `cardType` — 按类型筛选。九种可创建类型为 `card`、`diary`、`task`、`html`、`mermaid`、`mind-map`、`draw-board`、`multi-table`、`attachment`；筛选历史数据时也可遇到 `rich-text`、`card-date`、`mark` 等内部类型。
+- 标题、正文、HTML、Mermaid 与结构化文本节点中的 Unicode Emoji 会保留在派生搜索文本中，可直接用 Emoji 关键词搜索。
 - `subType` — `pdf | audio | video | img | web-clip` 等
 - `isCollect` — 仅收藏
 - `from` / `to` — 日期范围（ISO 8601）

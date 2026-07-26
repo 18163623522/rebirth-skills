@@ -45,6 +45,8 @@ skills/
 
 ## cardType 约定（CLI/MCP 创建）
 
-- **仅五种**：`card`（默认）、`diary`、`html`、`mind-map`、`mermaid`。
-- **没有 `rich-text`**：创建时传入 `rich-text` 会报错；文档与示例一律用上述五种。
-- 搜索/盒子筛选若针对旧库，可能仍会遇到历史类型字符串；新建与技能说明以五种为准。详见 `skills/references/create-card.md`、`skills/references/update-card.md`。
+- 九种用户卡片：`card`、`diary`、`task`、`html`、`mermaid`、`mind-map`、`draw-board`、`multi-table`、`attachment`。
+- 思维导图通过 CLI/MCP 创建或更新时，根 `id`、节点/连线 `mapId` 会统一为卡片 ID，保证嵌入画板后的整树移动与布局同步。
+- `rich-text`、`mark`、`card-date`、`local-directory` 是内部或历史类型，不开放直接创建。
+- 附件使用顶级类型 `attachment`，图片等媒体类型写入 `subType`，其中图片统一为 `img`。
+- 所有文本字段支持 Unicode Emoji 原样往返。详细输入和返回契约见 `references/create-card.md`、`references/update-card.md`、`references/view-card.md`。
