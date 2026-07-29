@@ -1,7 +1,7 @@
 ---
 name: setup-cli
 description: Build, configure, and run the RebirthNote CLI and MCP Server. Use when user needs to set up, build, or configure the CLI/MCP integration.
-version: 1.1.0
+version: 1.2.0
 tags: [rebirthnote, cli, mcp, setup, configuration]
 ---
 
@@ -13,6 +13,19 @@ tags: [rebirthnote, cli, mcp, setup, configuration]
 npm run build:cli          # Build → cli-mcp-publish/dist-cli/index.mjs
 node cli-mcp-publish/dist-cli/index.mjs   # Run CLI directly
 ```
+
+### Install Verification
+
+```bash
+npm i -g @rebirthnote/cli@latest
+rebirth --version
+rebirth-mcp --version
+```
+
+Both commands must report the same npm package version. Versions `1.0.3` and
+`1.0.4` omitted required runtime dependencies; upgrade to `1.0.5` or newer.
+The publish gate now scans built static/dynamic imports against package
+dependencies before npm publication.
 
 ### Global Options
 

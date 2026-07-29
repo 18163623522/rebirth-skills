@@ -1,7 +1,7 @@
 ---
 name: rebirthnote
 description: Operate RebirthNote notes via CLI and MCP — search, create, view, update, delete cards; manage tags, boxes, spaces, todos, prompts; setup CLI/MCP. One skill entry point; see references/ for per-operation details (progressive disclosure).
-version: 2.1.0
+version: 2.1.1
 tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 ---
 
@@ -95,6 +95,7 @@ tags: [rebirthnote, notes, cli, mcp, zettelkasten]
 
 ## 版本
 
+- 2.1.1：修复 npm 发布包运行时依赖遗漏，CLI/MCP 双入口版本统一，并增加干净安装启动门禁。
 - 2.1.0：补齐 CLI 的全部 29 项业务能力到 MCP，并增加命令面、参数和 Skill 文档的防漂移校验。
 - 2.0.0：统一九种用户卡片的 CLI/MCP/Skill 契约，补齐结构化内容、附件与 Unicode Emoji 往返。
 - 1.1.0：入口仍为根 `SKILL.md`；按操作细节迁至 `references/*.md`，并约定 `scripts/`、`assets/`。
